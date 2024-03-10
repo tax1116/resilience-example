@@ -1,3 +1,7 @@
+redis:
+  topic:
+    circuit-breaker: circuit-breaker-open-events
+
 resilience4j:
   circuitbreaker:
     instances:

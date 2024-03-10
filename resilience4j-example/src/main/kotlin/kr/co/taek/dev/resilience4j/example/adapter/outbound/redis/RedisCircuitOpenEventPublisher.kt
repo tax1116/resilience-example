@@ -1,17 +1,19 @@
 package kr.co.taek.dev.resilience4j.example.adapter.outbound.redis
 
 import kr.co.taek.dev.resilience4j.example.application.port.outbound.CircuitOpenEventPublisher
-import org.redisson.api.RedissonClient
+import org.springframework.data.redis.core.RedisTemplate
+import org.springframework.data.redis.listener.ChannelTopic
 import org.springframework.stereotype.Component
 import java.time.LocalDateTime
 
 @Component
-class RedissonCircuitOpenEventPublisher(
-    private val redissonClient: RedissonClient
+class RedisCircuitOpenEventPublisher(
+    private val redisTemplate: RedisTemplate<String, OpenEvent>,
+    private val circuitBreakerOpenTopic: ChannelTopic,
 ): CircuitOpenEventPublisher {
+
     override fun publish(circuitBreakerName: String, publishAt: LocalDateTime) {
-        redissonClient.getTopic("circuit-breaker-open-event")
-            .publish(OpenEvent(circuitBreakerName, publishAt))
+        redisTemplate.convertAndSend(circuitBreakerOpenTopic.topic, OpenEvent(circuitBreakerName, publishAt))
     }
 
 }
