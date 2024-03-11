@@ -1,8 +1,8 @@
 package kr.co.taek.dev.resilience4j.example.bootstrap.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import kr.co.taek.dev.resilience4j.example.adapter.inbound.redis.RedisOpenEventListener
-import kr.co.taek.dev.resilience4j.example.adapter.outbound.redis.OpenEvent
+import kr.co.taek.dev.resilience4j.example.adapter.inbound.redis.RedisChangedCircuitEventListener
+import kr.co.taek.dev.resilience4j.example.adapter.outbound.redis.ChangedCircuitEvent
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -30,12 +30,12 @@ class RedisConfig {
     @Bean
     fun redisTemplate(
         objectMapper: ObjectMapper
-    ): RedisTemplate<String, OpenEvent> {
-        val redisTemplate = RedisTemplate<String, OpenEvent>()
+    ): RedisTemplate<String, ChangedCircuitEvent> {
+        val redisTemplate = RedisTemplate<String, ChangedCircuitEvent>()
         redisTemplate.apply {
             this.connectionFactory = lettuceConnectionFactory()
             this.stringSerializer = StringRedisSerializer()
-            this.valueSerializer = Jackson2JsonRedisSerializer(objectMapper, OpenEvent::class.java)
+            this.valueSerializer = Jackson2JsonRedisSerializer(objectMapper, ChangedCircuitEvent::class.java)
         }
 
         return redisTemplate
@@ -43,12 +43,12 @@ class RedisConfig {
 
     @Bean
     fun redisContainer(
-        redisOpenEventListener: RedisOpenEventListener,
+        redisChangedCircuitEventListener: RedisChangedCircuitEventListener,
         circuitBreakerOpenTopic: ChannelTopic,
     ): RedisMessageListenerContainer {
         val container = RedisMessageListenerContainer()
         container.setConnectionFactory(lettuceConnectionFactory())
-        container.addMessageListener(redisOpenEventListener, circuitBreakerOpenTopic)
+        container.addMessageListener(redisChangedCircuitEventListener, circuitBreakerOpenTopic)
         return container
     }
 }

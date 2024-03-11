@@ -3,7 +3,7 @@ package kr.co.taek.dev.resilience4j.example.bootstrap.config
 import io.github.oshai.kotlinlogging.KotlinLogging
 import io.github.resilience4j.circuitbreaker.CircuitBreaker
 import io.github.resilience4j.circuitbreaker.CircuitBreakerRegistry
-import kr.co.taek.dev.resilience4j.example.circuitbreaker.event.CircuitOpenEvent
+import kr.co.taek.dev.resilience4j.example.circuitbreaker.event.ChangedCircuitEvent
 import org.springframework.context.ApplicationEventPublisher
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -27,12 +27,16 @@ class CircuitBreakerConfig(
                 val toState = it.stateTransition.toState
                 log.info { "[${cb.name}] CircuitBreaker state changed $fromState to $toState" }
 
-                if (toState == CircuitBreaker.State.OPEN) {
-                    applicationEventPublisher.publishEvent(CircuitOpenEvent(cbName, LocalDateTime.now()))
+                if (toState.shouldPublishEvent()) {
+                    applicationEventPublisher.publishEvent(ChangedCircuitEvent(cbName, toState.name, LocalDateTime.now()))
                 }
             }
         return cb
     }
+
+    private fun CircuitBreaker.State.shouldPublishEvent(): Boolean =
+        this in setOf (CircuitBreaker.State.OPEN, CircuitBreaker.State.CLOSED)
+
 
     @Bean
     fun receiverCircuitBreaker(): CircuitBreaker {
