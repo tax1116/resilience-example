@@ -21,15 +21,14 @@ class RedisConfig {
         return LettuceConnectionFactory("localhost", 6379)
     }
 
-
     @Bean
     fun circuitBreakerOpenTopic(
-        @Value("\${redis.topic.circuit-breaker}") topic: String
+        @Value("\${redis.topic.circuit-breaker}") topic: String,
     ): ChannelTopic = ChannelTopic(topic)
 
     @Bean
     fun redisTemplate(
-        objectMapper: ObjectMapper
+        objectMapper: ObjectMapper,
     ): RedisTemplate<String, ChangedCircuitEvent> {
         val redisTemplate = RedisTemplate<String, ChangedCircuitEvent>()
         redisTemplate.apply {

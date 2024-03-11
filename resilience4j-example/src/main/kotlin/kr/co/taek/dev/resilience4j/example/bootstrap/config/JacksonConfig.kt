@@ -13,7 +13,7 @@ class JacksonConfig {
     fun objectMapper() = ObjectMapper().apply {
         this.registerModules(
             KotlinModule.Builder().build(),
-            JavaTimeModule()
+            JavaTimeModule(),
         )
     }
 }

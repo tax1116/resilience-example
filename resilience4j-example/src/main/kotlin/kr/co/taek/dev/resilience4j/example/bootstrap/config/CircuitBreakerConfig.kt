@@ -35,8 +35,7 @@ class CircuitBreakerConfig(
     }
 
     private fun CircuitBreaker.State.shouldPublishEvent(): Boolean =
-        this in setOf (CircuitBreaker.State.OPEN, CircuitBreaker.State.CLOSED)
-
+        this in setOf(CircuitBreaker.State.OPEN, CircuitBreaker.State.CLOSED)
 
     @Bean
     fun receiverCircuitBreaker(): CircuitBreaker {

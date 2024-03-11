@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class CircuitBreakerExampleController(
-    private val changeCircuitUseCase: ChangeCircuitUseCase
+    private val changeCircuitUseCase: ChangeCircuitUseCase,
 ) {
 
     @PostMapping("/circuit-breaker/change")
@@ -19,6 +19,6 @@ class CircuitBreakerExampleController(
 
     data class ChangeRequest(
         val circuitBreakerName: String,
-        val state: String
+        val state: String,
     )
 }

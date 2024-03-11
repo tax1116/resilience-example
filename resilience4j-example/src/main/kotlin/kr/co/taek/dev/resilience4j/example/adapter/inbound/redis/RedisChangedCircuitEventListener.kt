@@ -13,8 +13,8 @@ private val log = KotlinLogging.logger {}
 @Component
 class RedisChangedCircuitEventListener(
     private val changeCircuitUseCase: ChangeCircuitUseCase,
-    private val objectMapper: ObjectMapper
-): MessageListenerAdapter() {
+    private val objectMapper: ObjectMapper,
+) : MessageListenerAdapter() {
     override fun onMessage(message: Message, pattern: ByteArray?) {
         log.info { "Received message: ${String(message.body)}" }
         val event = objectMapper.readValue(String(message.body), ChangedCircuitEvent::class.java)
