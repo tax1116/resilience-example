@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class CircuitBreakerChainBootstrap
+class CircuitBreakerBootstrap
 
 fun main(args: Array<String>) {
-    runApplication<CircuitBreakerChainBootstrap>(*args)
+    runApplication<CircuitBreakerBootstrap>(*args)
 }
