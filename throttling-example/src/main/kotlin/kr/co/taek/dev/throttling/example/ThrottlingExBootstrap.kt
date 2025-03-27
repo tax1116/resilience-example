@@ -1,11 +1,11 @@
-package kr.co.taek.dev.ratelimiter.example
+package kr.co.taek.dev.throttling.example
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class RateLimiterExBootstrap 
+class ThrottlingExBootstrap
 
 fun main(args: Array<String>) {
-    runApplication<RateLimiterExBootstrap>(*args)
+    runApplication<ThrottlingExBootstrap>(*args)
 }
