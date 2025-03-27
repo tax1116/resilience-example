@@ -3,9 +3,11 @@ kotlin = "1.9.22"
 kotlin-logging = "5.1.0"
 ktlint = "12.0.3"
 kotest = "5.8.0"
-spring-boot = "3.2.1"
-spring-dependency-management = "1.1.4"
-resilience4j = "2.2.0"
+spring-boot = "3.4.3"
+spring-dependency-management = "1.1.7"
+concurrency-limits = "0.5.3"
+resilience4j = "2.3.0"
+jackson = "2.16.1"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
@@ -27,6 +29,10 @@ kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.
 kotest-runner-junit5 = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 spring-boot-starter-test = { module = "org.springframework.boot:spring-boot-starter-test" }
 
+# jackson
+jackson-module-kotlin = { module = "com.fasterxml.jackson.module:jackson-module-kotlin", version.ref = "jackson" }
+jackson-datatype-jsr310 = { module = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310", version.ref = "jackson" }
+
 # spring
 spring-context = { module = "org.springframework:spring-context" }
 spring-boot-starter = { module = "org.springframework.boot:spring-boot-starter" }
@@ -34,8 +40,17 @@ spring-boot-starter-aop = { module = "org.springframework.boot:spring-boot-start
 spring-boot-starter-web = { module = "org.springframework.boot:spring-boot-starter-web" }
 spring-boot-starter-webflux = { module = "org.springframework.boot:spring-boot-starter-webflux" }
 spring-boot-starter-actuator = { module = "org.springframework.boot:spring-boot-starter-actuator" }
+spring-boot-starter-data-redis = { module = "org.springframework.boot:spring-boot-starter-data-redis" }
 
 # resilience4j
-resilience4j-kotlin = { module = "io.github.resilience4j:resilience4j-kotlin", version.ref = "resilience4j" }
 resilience4j-spring-boot3 = { module = "io.github.resilience4j:resilience4j-spring-boot3", version.ref = "resilience4j" }
+resilience4j-kotlin = { module = "io.github.resilience4j:resilience4j-kotlin", version.ref = "resilience4j" }
 
+# netflix concurrency-limits
+concurrency-limits-core = { module = "com.netflix.concurrency-limits:concurrency-limits-core", version.ref = "concurrency-limits" }
+concurrency-limits-grpc = { module = "com.netflix.concurrency-limits:concurrency-limits-grpc", version.ref = "concurrency-limits" }
+concurrency-limits-spectator = { module = "com.netflix.concurrency-limits:concurrency-limits-spectator", version.ref = "concurrency-limits" }
+concurrency-limits-servlet-jakarta = { module = "com.netflix.concurrency-limits:concurrency-limits-servlet-jakarta", version.ref = "concurrency-limits" }
+
+# bucket4j
+bucket4j-spring-boot-starter = { module = "com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter", version = "0.12.8" }

@@ -3,4 +3,8 @@ plugins {
 }
 rootProject.name = "resilience-example"
 
-include("circuitbreaker-example")
+include(
+    "circuitbreaker-example",
+    "chaos-monkey-example",
+    "throttling-example"
+)
