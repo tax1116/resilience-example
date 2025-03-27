@@ -31,7 +31,6 @@ tasks.withType<KotlinCompile> {
 }
 
 tasks.withType<Test> {
-//    jvmArgs = listOf("--add-opens", "java.base/java.lang.invoke=ALL-UNNAMED")
     useJUnitPlatform()
 }
 
@@ -42,7 +41,7 @@ dependencies {
 }
 
 ktlint {
-    version.set("0.50.0")
+    version.set("1.2.1")
     filter {
         exclude {
             it.file.path.startsWith(project.layout.buildDirectory.get().dir("generated").toString())

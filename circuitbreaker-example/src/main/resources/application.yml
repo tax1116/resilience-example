@@ -21,3 +21,6 @@ resilience4j:
         permitted-number-of-calls-in-half-open-state: 5
         max-wait-duration-in-half-open-state:
           seconds: 60
+
+server:
+  port: 10000
