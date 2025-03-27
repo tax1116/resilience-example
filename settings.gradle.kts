@@ -5,5 +5,6 @@ rootProject.name = "resilience-example"
 
 include(
     "circuitbreaker-example",
-    "chaos-monkey-example"
+    "chaos-monkey-example",
+    "throttling-example"
 )
