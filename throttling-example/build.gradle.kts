@@ -1,5 +1,6 @@
 plugins {
     id("spring-boot-convention")
+    id("io.gatling.gradle") version "3.13.5.1"
 }
 
 dependencies {

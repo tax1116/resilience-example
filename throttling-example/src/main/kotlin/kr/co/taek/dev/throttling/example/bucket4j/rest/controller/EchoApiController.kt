@@ -18,11 +18,6 @@ class EchoApiController(
         @RequestHeader("X-API-KEY") apiKey: String,
         @RequestBody message: String
     ): ResponseEntity<String> {
-
-        return try {
-            ResponseEntity.ok(echoService.echo(apiKey, message))
-        } catch (e: Exception) {
-            ResponseEntity.status(429).body("API 사용량을 초과하였습니다.")
-        }
+        return ResponseEntity.ok(echoService.echo(apiKey, message))
     }
 }
