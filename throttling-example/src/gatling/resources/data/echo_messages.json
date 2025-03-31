@@ -1,0 +1,5 @@
+[
+  {"tier": "FREE", "apiKey": "FREE-12345678", "message": "Hello, Free User!"},
+  {"tier": "STANDARD", "apiKey": "STD-23456789", "message": "Hello, Standard User!" },
+  {"tier": "PREMIUM", "apiKey": "PREM-23456789", "message": "Hello, Premium User!" }
+]

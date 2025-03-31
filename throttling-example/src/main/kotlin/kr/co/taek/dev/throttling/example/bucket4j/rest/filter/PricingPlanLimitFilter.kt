@@ -2,6 +2,7 @@ package kr.co.taek.dev.throttling.example.bucket4j.rest.filter
 
 import io.github.bucket4j.Bandwidth
 import io.github.bucket4j.Bucket
+import io.github.oshai.kotlinlogging.KotlinLogging
 import jakarta.servlet.Filter
 import jakarta.servlet.FilterChain
 import jakarta.servlet.ServletRequest
@@ -12,6 +13,8 @@ import kr.co.taek.dev.throttling.example.bucket4j.rest.enumeration.PricingPlan
 import org.springframework.stereotype.Component
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
+
+private val logger = KotlinLogging.logger { }
 
 @Component
 class PricingPlanLimitFilter : Filter {
@@ -33,6 +36,7 @@ class PricingPlanLimitFilter : Filter {
             httpResponse.status = 429
             httpResponse.addHeader("X-Rate-Limit-Retry-After-Millis", TimeUnit.NANOSECONDS.toMillis(probe.nanosToWaitForRefill).toString())
             httpResponse.writer.write("Too Many Requests")
+            logger.warn { "Rate limit exceeded!" }
         }
     }
     private fun resolveBucket(apiKey: String): Bucket {
