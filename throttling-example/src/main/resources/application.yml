@@ -3,3 +3,14 @@ server:
 
 bucket4j:
   enabled: false
+
+spring:
+  data:
+    redis:
+      host: localhost
+      port: 6379
+
+redis:
+  rate:
+    limiter:
+      enabled: true
