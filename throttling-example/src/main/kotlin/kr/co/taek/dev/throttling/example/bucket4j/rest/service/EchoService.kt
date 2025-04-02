@@ -6,13 +6,19 @@ import org.springframework.stereotype.Service
 private val logger = KotlinLogging.logger {}
 
 interface EchoService {
-    fun echo(apiKey: String, message: String): String
+    fun echo(
+        apiKey: String,
+        message: String,
+    ): String
 }
 
 @Service
-class  EchoServiceImpl : EchoService {
-    override fun echo(apiKey: String, message: String): String {
-        logger.info {  "echo $message" }
+class EchoServiceImpl : EchoService {
+    override fun echo(
+        apiKey: String,
+        message: String,
+    ): String {
+        logger.info { "echo $message" }
         return message
     }
 }

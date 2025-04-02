@@ -2,6 +2,14 @@ version: "3.9"
 services:
   redis:
     image: redis:latest
+    platform: linux/amd64 # for M1/M2 Mac
     container_name: redis
     ports:
       - "6379:6379"
+    environment:
+      TZ: Asia/Seoul
+
+networks:
+  default:
+    name: throttling-example
+    external: true
