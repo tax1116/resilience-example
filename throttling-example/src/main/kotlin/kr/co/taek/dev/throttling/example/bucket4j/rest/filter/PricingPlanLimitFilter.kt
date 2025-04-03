@@ -10,17 +10,23 @@ import jakarta.servlet.ServletResponse
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import kr.co.taek.dev.throttling.example.bucket4j.rest.enumeration.PricingPlan
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.stereotype.Component
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
 private val logger = KotlinLogging.logger { }
 
+@ConditionalOnProperty(value = ["redis.rate.limiter.enabled"], havingValue = "false")
 @Component
 class PricingPlanLimitFilter : Filter {
     private val bucketCache = ConcurrentHashMap<String, Bucket>()
 
-    override fun doFilter(p0: ServletRequest, p1: ServletResponse, p2: FilterChain) {
+    override fun doFilter(
+        p0: ServletRequest,
+        p1: ServletResponse,
+        p2: FilterChain,
+    ) {
         val httpRequest = p0 as HttpServletRequest
         val apiKey = httpRequest.getHeader("X-API-KEY")
         val bucket = resolveBucket(apiKey)
@@ -39,6 +45,7 @@ class PricingPlanLimitFilter : Filter {
             logger.warn { "Rate limit exceeded!" }
         }
     }
+
     private fun resolveBucket(apiKey: String): Bucket {
         return bucketCache.computeIfAbsent(apiKey) {
             val pricePlan = PricingPlan.resolvePlanFromApiKey(apiKey)
@@ -46,7 +53,8 @@ class PricingPlanLimitFilter : Filter {
         }
     }
 
-    private fun createNewBucket(bandwidth: Bandwidth): Bucket = Bucket.builder()
-        .addLimit(bandwidth)
-        .build()
+    private fun createNewBucket(bandwidth: Bandwidth): Bucket =
+        Bucket.builder()
+            .addLimit(bandwidth)
+            .build()
 }

@@ -8,20 +8,22 @@ import io.gatling.javaapi.http.HttpDsl.http
 import kr.co.taek.dev.throttling.example.gatling.endpoints.APIEndpoints
 import java.time.Duration
 
-class EchoSimulations: Simulation() {
+class EchoSimulations : Simulation() {
     private val feeder = jsonFile("data/echo_messages.json").circular()
 
-    private val scn = scenario("Echo Load Test")
-        .feed(feeder)
-        .exec(APIEndpoints.echo)
+    private val scn =
+        scenario("Echo Load Test")
+            .feed(feeder)
+            .exec(APIEndpoints.echo)
 
     init {
         setUp(
             scn.injectOpen(
-                constantUsersPerSec(50.0).during(Duration.ofSeconds(60))
-            )
+                constantUsersPerSec(50.0).during(Duration.ofSeconds(60)),
+            ),
         ).protocols(
-            http.baseUrl("http://localhost:10000")
+            // http.baseUrl("http://localhost:10000"),
+            http.baseUrl("http://localhost"),
         )
     }
 }

@@ -54,3 +54,4 @@ concurrency-limits-servlet-jakarta = { module = "com.netflix.concurrency-limits:
 
 # bucket4j
 bucket4j-spring-boot-starter = { module = "com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter", version = "0.12.8" }
+bucket4j-redis = { module = "com.bucket4j:bucket4j-redis", version = "8.10.1"}
