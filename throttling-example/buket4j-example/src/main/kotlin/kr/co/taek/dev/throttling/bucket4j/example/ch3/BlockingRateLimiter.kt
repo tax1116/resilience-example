@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.example.bucket4j.ch3
+package kr.co.taek.dev.throttling.bucket4j.example.ch3
 
 import io.github.bucket4j.Bucket
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -36,13 +36,13 @@ class BlockingRateLimiter {
     }
 }
 
-// fun main() {
-//     val rateLimiter = BlockingRateLimiter()
-//     for (i in 1..100) {
-//         Thread.sleep(100)
-//         val start = System.currentTimeMillis()
-//         rateLimiter.blockingConsume(1)
-//         val end = System.currentTimeMillis()
-//         logger.info { "Consume $i, took ${end - start}ms" }
-//     }
-// }
+fun main() {
+    val rateLimiter = BlockingRateLimiter()
+    for (i in 1..100) {
+        Thread.sleep(100)
+        val start = System.currentTimeMillis()
+        rateLimiter.blockingConsume(1)
+        val end = System.currentTimeMillis()
+        logger.info { "Consume $i, took ${end - start}ms" }
+    }
+}

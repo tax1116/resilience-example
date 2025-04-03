@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.example.bucket4j.ch2
+package kr.co.taek.dev.throttling.bucket4j.example.ch2
 
 import io.github.bucket4j.Bucket
 import io.github.oshai.kotlinlogging.KotlinLogging
@@ -22,14 +22,14 @@ class InitializedRateLimiter {
     }
 }
 
-// fun main() {
-//     val rateLimiter = InitializedRateLimiter()
-//     for (i in 1..100) {
-//         Thread.sleep(100)
-//         if (rateLimiter.tryConsume(1)) {
-//             logger.info { "Consume $i" }
-//         } else {
-//             logger.info { "Reject $i" }
-//         }
-//     }
-// }
+fun main() {
+    val rateLimiter = InitializedRateLimiter()
+    for (i in 1..100) {
+        Thread.sleep(100)
+        if (rateLimiter.tryConsume(1)) {
+            logger.info { "Consume $i" }
+        } else {
+            logger.info { "Reject $i" }
+        }
+    }
+}
