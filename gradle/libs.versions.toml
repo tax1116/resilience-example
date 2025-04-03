@@ -8,6 +8,8 @@ spring-dependency-management = "1.1.7"
 concurrency-limits = "0.5.3"
 resilience4j = "2.3.0"
 jackson = "2.16.1"
+logback = "1.5.18"
+bucket4j = "8.7.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
@@ -15,6 +17,7 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
 [libraries]
 # 프로젝트 공통 라이브러리
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
+logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
 
 # gradle 플러그인
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -55,3 +58,4 @@ concurrency-limits-servlet-jakarta = { module = "com.netflix.concurrency-limits:
 # bucket4j
 bucket4j-spring-boot-starter = { module = "com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter", version = "0.12.8" }
 bucket4j-redis = { module = "com.bucket4j:bucket4j-redis", version = "8.10.1"}
+bucket4j-core = { module = "com.bucket4j:bucket4j-core", version.ref = "bucket4j" }

@@ -11,5 +11,5 @@ services:
 
 networks:
   default:
-    name: throttling-example
+    name: resilience-example
     external: true
