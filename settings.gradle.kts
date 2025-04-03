@@ -7,5 +7,5 @@ include(
     "circuitbreaker-example",
     "chaos-monkey-example",
     "throttling-example",
-    "throttling-example:buket4j-example"
+    "throttling-example:bucket4j-example"
 )
