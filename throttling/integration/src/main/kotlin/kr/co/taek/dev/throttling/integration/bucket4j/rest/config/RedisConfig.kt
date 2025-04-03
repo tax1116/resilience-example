@@ -20,7 +20,6 @@ private val logger = KotlinLogging.logger {}
 class RedisConfig {
     @Bean
     fun proxyManager(redisProperties: RedisProperties): ProxyManager<String> {
-        logger.info { "레디스 url: ${redisProperties.host}:${redisProperties.port}" }
         val redisClient = RedisClient.create("redis://${redisProperties.host}:${redisProperties.port}")
         val redisConnection = redisClient.connect(RedisCodec.of(StringCodec.UTF8, ByteArrayCodec.INSTANCE))
 
