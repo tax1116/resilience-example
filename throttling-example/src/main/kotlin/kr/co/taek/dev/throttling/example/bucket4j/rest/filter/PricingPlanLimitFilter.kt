@@ -22,7 +22,11 @@ private val logger = KotlinLogging.logger { }
 class PricingPlanLimitFilter : Filter {
     private val bucketCache = ConcurrentHashMap<String, Bucket>()
 
-    override fun doFilter(p0: ServletRequest, p1: ServletResponse, p2: FilterChain) {
+    override fun doFilter(
+        p0: ServletRequest,
+        p1: ServletResponse,
+        p2: FilterChain,
+    ) {
         val httpRequest = p0 as HttpServletRequest
         val apiKey = httpRequest.getHeader("X-API-KEY")
         val bucket = resolveBucket(apiKey)
@@ -41,6 +45,7 @@ class PricingPlanLimitFilter : Filter {
             logger.warn { "Rate limit exceeded!" }
         }
     }
+
     private fun resolveBucket(apiKey: String): Bucket {
         return bucketCache.computeIfAbsent(apiKey) {
             val pricePlan = PricingPlan.resolvePlanFromApiKey(apiKey)
@@ -48,7 +53,8 @@ class PricingPlanLimitFilter : Filter {
         }
     }
 
-    private fun createNewBucket(bandwidth: Bandwidth): Bucket = Bucket.builder()
-        .addLimit(bandwidth)
-        .build()
+    private fun createNewBucket(bandwidth: Bandwidth): Bucket =
+        Bucket.builder()
+            .addLimit(bandwidth)
+            .build()
 }

@@ -10,20 +10,20 @@ enum class PricingPlan(
         Bandwidth.builder()
             .capacity(60)
             .refillIntervally(1, Duration.ofSeconds(1))
-            .build()
+            .build(),
     ),
     STANDARD(
         Bandwidth.builder()
             .capacity(300)
             .refillIntervally(5, Duration.ofSeconds(1))
-            .build()
+            .build(),
     ),
     PREMIUM(
         Bandwidth.builder()
             .capacity(1200)
             .refillIntervally(20, Duration.ofSeconds(1))
-            .build()
-    )
+            .build(),
+    ),
     ;
 
     companion object {

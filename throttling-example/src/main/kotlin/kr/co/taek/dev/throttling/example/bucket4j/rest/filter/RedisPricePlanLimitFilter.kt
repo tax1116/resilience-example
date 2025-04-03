@@ -14,7 +14,7 @@ import org.springframework.web.filter.OncePerRequestFilter
 @ConditionalOnProperty(value = ["redis.rate.limiter.enabled"], havingValue = "true")
 @Component
 class RedisPricePlanLimitFilter(
-    private val proxyManager: ProxyManager<String>
+    private val proxyManager: ProxyManager<String>,
 ) : OncePerRequestFilter() {
     override fun doFilterInternal(
         request: HttpServletRequest,
