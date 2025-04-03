@@ -9,7 +9,7 @@ concurrency-limits = "0.5.3"
 resilience4j = "2.3.0"
 jackson = "2.16.1"
 logback = "1.5.18"
-bucket4j = "8.7.0"
+bucket4j-jdk17-core = "8.14.0"
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
@@ -58,4 +58,4 @@ concurrency-limits-servlet-jakarta = { module = "com.netflix.concurrency-limits:
 # bucket4j
 bucket4j-spring-boot-starter = { module = "com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter", version = "0.12.8" }
 bucket4j-redis = { module = "com.bucket4j:bucket4j-redis", version = "8.10.1"}
-bucket4j-core = { module = "com.bucket4j:bucket4j-core", version.ref = "bucket4j" }
+bucket4j-jdk17-core = { module = "com.bucket4j:bucket4j_jdk17-core", version.ref = "bucket4j-jdk17-core" }

@@ -3,6 +3,6 @@ plugins {
 }
 
 dependencies {
-    implementation(libs.bucket4j.core)
+    implementation(libs.bucket4j.jdk17.core)
     implementation(libs.logback.classic)
 }
