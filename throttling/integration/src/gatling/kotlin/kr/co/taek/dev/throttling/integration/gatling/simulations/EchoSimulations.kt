@@ -22,8 +22,8 @@ class EchoSimulations : Simulation() {
                 constantUsersPerSec(50.0).during(Duration.ofSeconds(60)),
             ),
         ).protocols(
-            // http.baseUrl("http://localhost:10000"),
-            http.baseUrl("http://localhost"),
+            http.baseUrl("http://localhost:10000"),
+            // http.baseUrl("http://localhost"),
         )
     }
 }

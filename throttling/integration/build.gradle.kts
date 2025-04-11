@@ -22,6 +22,8 @@ dependencies {
 
     implementation(libs.spring.boot.starter.data.redis)
     implementation(libs.bucket4j.redis)
+
+    implementation(libs.bundles.observability)
 }
 
 tasks.getByName<Jar>("jar") {

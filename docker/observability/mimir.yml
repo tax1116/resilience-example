@@ -1,0 +1,39 @@
+multitenancy_enabled: false
+
+# 스토리지 설정
+blocks_storage:
+  backend: filesystem
+  bucket_store:
+    sync_dir: /data/bucket_store/sync_dir
+  filesystem:
+    dir: /data/filesystem
+  tsdb:
+    dir: /data/tsdb
+
+# TSDB 블록 압축 및 최적화
+compactor:
+  data_dir: /data/compactor/data_dir
+
+# TSDB에 저장
+ingester:
+  ring:
+    replication_factor: 1
+
+# 알람, 규칙 저장. Prometheus의 룰 그룹과 유사한 역할
+ruler_storage:
+  backend: filesystem
+  filesystem:
+    dir: /data/ruler_storage
+
+# TSDB 블록 데이터 캐싱 및 쿼리 성능 최적화 용도
+store_gateway:
+  sharding_ring:
+    replication_factor: 1
+
+# 보관 기간
+limits:
+  compactor_blocks_retention_period: 1d
+
+server:
+  http_listen_port: 9009
+  log_level: error

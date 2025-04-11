@@ -10,6 +10,10 @@ resilience4j = "2.3.0"
 jackson = "2.16.1"
 logback = "1.5.18"
 bucket4j-jdk17-core = "8.14.0"
+otel-exporter-otlp = "1.43.0"
+otel-logback = "2.10.0-alpha"
+micrometer-tracing-bom = "latest.release"
+
 
 [plugins]
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
@@ -26,6 +30,7 @@ kotlin-noarg = { module = "org.jetbrains.kotlin:kotlin-noarg", version.ref = "ko
 ktlint = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlint" }
 spring-boot-gradle = { module = "org.springframework.boot:spring-boot-gradle-plugin", version.ref = "spring-boot" }
 spring-dependency-management = { module = "io.spring.gradle:dependency-management-plugin", version.ref = "spring-dependency-management" }
+spring-boot-dependencies = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
 
 # test
 kotest-assertions-core = { module = "io.kotest:kotest-assertions-core", version.ref = "kotest" }
@@ -59,3 +64,26 @@ concurrency-limits-servlet-jakarta = { module = "com.netflix.concurrency-limits:
 bucket4j-spring-boot-starter = { module = "com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter", version = "0.12.8" }
 bucket4j-redis = { module = "com.bucket4j:bucket4j-redis", version = "8.10.1"}
 bucket4j-jdk17-core = { module = "com.bucket4j:bucket4j_jdk17-core", version.ref = "bucket4j-jdk17-core" }
+
+# observability
+opentelemetry-logback-appender = { module = "io.opentelemetry.instrumentation:opentelemetry-logback-appender-1.0", version.ref = "otel-logback" }
+opentelemetry-logback-mdc = { module = "io.opentelemetry.instrumentation:opentelemetry-logback-mdc-1.0", version.ref = "otel-logback" }
+opentelemetry-exporter-otlp = { module = "io.opentelemetry:opentelemetry-exporter-otlp", version.ref = "otel-exporter-otlp" }
+micrometer-tracing-bridge-otel = { module = "io.micrometer:micrometer-tracing-bridge-otel" }
+micrometer-registry-otlp = { module = "io.micrometer:micrometer-registry-otlp" }
+micrometer-tracing = { module = "io.micrometer:micrometer-tracing" }
+micrometer-tracing-bom = { module = "io.micrometer:micrometer-tracing-bom", version.ref = "micrometer-tracing-bom" }
+micrometer-observation = { module = "io.micrometer:micrometer-observation" }
+micrometer-datasource-spring-boot = { module = "net.ttddyy.observation:datasource-micrometer-spring-boot", version = "1.0.6" }
+
+[bundles]
+observability = [
+    "opentelemetry-logback-appender",
+    "opentelemetry-logback-mdc",
+    "opentelemetry-exporter-otlp",
+    "micrometer-tracing-bridge-otel",
+    "micrometer-registry-otlp",
+    "micrometer-tracing",
+    "micrometer-observation",
+    "micrometer-datasource-spring-boot"
+]
