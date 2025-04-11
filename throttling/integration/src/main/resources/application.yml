@@ -5,6 +5,8 @@ bucket4j:
   enabled: false
 
 spring:
+  application:
+    name: throttling-integration
   data:
     redis:
       host: localhost
@@ -14,3 +16,31 @@ redis:
   rate:
     limiter:
       enabled: true
+
+management:
+  observations:
+    annotations:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0 # 100% 샘플링 (프로덕션에서는 적절히 조정)
+  otlp:
+    metrics:
+      export:
+        url: http://localhost:4318/v1/metrics
+        step: 10s
+        enabled: true # Observation 설정
+    tracing:
+      export:
+        enabled: true
+      endpoint: http://localhost:4318/v1/traces
+    logging:
+      endpoint: http://localhost:4318/v1/logs
+      export:
+        enabled: true
+      transport: http
