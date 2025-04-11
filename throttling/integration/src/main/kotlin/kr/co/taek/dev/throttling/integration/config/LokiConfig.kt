@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.integration.bucket4j.rest.config
+package kr.co.taek.dev.throttling.integration.config
 
 import io.opentelemetry.api.OpenTelemetry
 import io.opentelemetry.instrumentation.logback.appender.v1_0.OpenTelemetryAppender

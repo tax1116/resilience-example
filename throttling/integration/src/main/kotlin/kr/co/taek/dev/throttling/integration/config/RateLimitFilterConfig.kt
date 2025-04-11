@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.integration.bucket4j.rest.config
+package kr.co.taek.dev.throttling.integration.config
 
 import io.github.bucket4j.distributed.ExpirationAfterWriteStrategy
 import io.github.bucket4j.distributed.proxy.ClientSideConfig
@@ -10,8 +10,8 @@ import io.lettuce.core.codec.ByteArrayCodec
 import io.lettuce.core.codec.RedisCodec
 import io.lettuce.core.codec.StringCodec
 import jakarta.servlet.Filter
-import kr.co.taek.dev.throttling.integration.bucket4j.rest.filter.PricingPlanLimitFilter
-import kr.co.taek.dev.throttling.integration.bucket4j.rest.filter.RedisPricePlanLimitFilter
+import kr.co.taek.dev.throttling.integration.filter.PricingPlanLimitFilter
+import kr.co.taek.dev.throttling.integration.filter.RedisPricePlanLimitFilter
 import org.apache.catalina.filters.RateLimitFilter
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.autoconfigure.data.redis.RedisProperties

@@ -10,7 +10,6 @@ spring:
       host: redis
       port: 6379
 
-redis:
-  rate:
-    limiter:
-      enabled: true
+rate-limit:
+  enabled: true
+  mode: redis # or redis

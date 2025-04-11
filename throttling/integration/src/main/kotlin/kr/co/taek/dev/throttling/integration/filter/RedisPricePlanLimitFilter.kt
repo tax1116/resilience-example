@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.integration.bucket4j.rest.filter
+package kr.co.taek.dev.throttling.integration.filter
 
 import io.github.bucket4j.Bucket
 import io.github.bucket4j.BucketConfiguration
@@ -6,7 +6,7 @@ import io.github.bucket4j.distributed.proxy.ProxyManager
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import kr.co.taek.dev.throttling.integration.bucket4j.rest.enumeration.PricingPlan
+import kr.co.taek.dev.throttling.integration.enumeration.PricingPlan
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
 import org.springframework.boot.autoconfigure.web.servlet.ConditionalOnMissingFilterBean
 import org.springframework.stereotype.Component
