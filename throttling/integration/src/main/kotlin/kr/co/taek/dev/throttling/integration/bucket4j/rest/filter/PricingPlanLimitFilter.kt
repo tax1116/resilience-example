@@ -11,14 +11,13 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import kr.co.taek.dev.throttling.integration.bucket4j.rest.enumeration.PricingPlan
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.boot.autoconfigure.web.servlet.ConditionalOnMissingFilterBean
 import org.springframework.stereotype.Component
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.TimeUnit
 
 private val logger = KotlinLogging.logger { }
 
-@ConditionalOnProperty(value = ["redis.rate.limiter.enabled"], havingValue = "false")
-@Component
 class PricingPlanLimitFilter : Filter {
     private val bucketCache = ConcurrentHashMap<String, Bucket>()
 

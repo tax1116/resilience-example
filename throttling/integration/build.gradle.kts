@@ -15,6 +15,7 @@ dependencies {
     implementation(libs.concurrency.limits.grpc)
     implementation(libs.concurrency.limits.spectator)
     implementation(libs.concurrency.limits.servlet.jakarta)
+    implementation(libs.spectator.reg.micrometer)
 
     implementation(libs.bucket4j.spring.boot.starter)
 

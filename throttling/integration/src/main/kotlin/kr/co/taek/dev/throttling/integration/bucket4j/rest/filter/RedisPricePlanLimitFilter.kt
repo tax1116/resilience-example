@@ -8,11 +8,10 @@ import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
 import kr.co.taek.dev.throttling.integration.bucket4j.rest.enumeration.PricingPlan
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.boot.autoconfigure.web.servlet.ConditionalOnMissingFilterBean
 import org.springframework.stereotype.Component
 import org.springframework.web.filter.OncePerRequestFilter
 
-@ConditionalOnProperty(value = ["redis.rate.limiter.enabled"], havingValue = "true")
-@Component
 class RedisPricePlanLimitFilter(
     private val proxyManager: ProxyManager<String>,
 ) : OncePerRequestFilter() {
