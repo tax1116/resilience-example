@@ -13,7 +13,7 @@ spring:
       port: 6379
 
 rate-limit:
-  enabled: true
+  enabled: false
   mode: in-memory # or redis
 
 management:
