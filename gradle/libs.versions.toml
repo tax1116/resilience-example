@@ -13,6 +13,7 @@ bucket4j-jdk17-core = "8.14.0"
 otel-exporter-otlp = "1.43.0"
 otel-logback = "2.10.0-alpha"
 micrometer-tracing-bom = "latest.release"
+spectator-reg-micrometer = "1.8.9"
 
 
 [plugins]
@@ -22,6 +23,7 @@ kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin"}
 # 프로젝트 공통 라이브러리
 kotlin-logging = { module = "io.github.oshai:kotlin-logging-jvm", version.ref = "kotlin-logging" }
 logback-classic = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 
 # gradle 플러그인
 kotlin-gradle = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -59,6 +61,8 @@ concurrency-limits-core = { module = "com.netflix.concurrency-limits:concurrency
 concurrency-limits-grpc = { module = "com.netflix.concurrency-limits:concurrency-limits-grpc", version.ref = "concurrency-limits" }
 concurrency-limits-spectator = { module = "com.netflix.concurrency-limits:concurrency-limits-spectator", version.ref = "concurrency-limits" }
 concurrency-limits-servlet-jakarta = { module = "com.netflix.concurrency-limits:concurrency-limits-servlet-jakarta", version.ref = "concurrency-limits" }
+
+spectator-reg-micrometer = { module = "com.netflix.spectator:spectator-reg-micrometer", version.ref = "spectator-reg-micrometer" }
 
 # bucket4j
 bucket4j-spring-boot-starter = { module = "com.giffing.bucket4j.spring.boot.starter:bucket4j-spring-boot-starter", version = "0.12.8" }

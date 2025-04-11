@@ -36,6 +36,7 @@ tasks.withType<Test> {
 
 dependencies {
     implementation(libs.kotlin.logging)
+    implementation(libs.kotlin.reflect)
     testImplementation(libs.kotest.assertions.core)
     testImplementation(libs.kotest.runner.junit5)
 }
