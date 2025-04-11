@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.integration.bucket4j.rest.service
+package kr.co.taek.dev.throttling.integration.service
 
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.stereotype.Service

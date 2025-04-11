@@ -1,4 +1,4 @@
-package kr.co.taek.dev.throttling.integration.bucket4j.rest.enumeration
+package kr.co.taek.dev.throttling.integration.enumeration
 
 import io.github.bucket4j.Bandwidth
 import java.time.Duration

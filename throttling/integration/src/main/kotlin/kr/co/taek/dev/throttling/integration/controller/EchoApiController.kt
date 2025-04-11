@@ -1,6 +1,6 @@
-package kr.co.taek.dev.throttling.integration.bucket4j.rest.controller
+package kr.co.taek.dev.throttling.integration.controller
 
-import kr.co.taek.dev.throttling.integration.bucket4j.rest.service.EchoService
+import kr.co.taek.dev.throttling.integration.service.EchoService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
